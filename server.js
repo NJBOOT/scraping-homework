@@ -37,7 +37,6 @@ app.get("/home", function (req, res) {
 })
 
 app.get("/scrape", function (req, res) {
-    // console.log("Scrape Route Hit")
     axios.get("https://www.washingtonpost.com").then(function (response) {
 
         var data = cheerio.load(response.data)
