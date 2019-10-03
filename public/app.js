@@ -31,7 +31,7 @@ $(document).ready(function () {
             url: "/scrape"
         }).then(function (result) {
             console.log(result)
-            location.href = "/"
+            window.location.reload(true)
         })
     })
 
@@ -103,6 +103,16 @@ $(document).ready(function () {
         })
         $(".note-title").val("");
         $(".note-body").val("")
+    })
+
+    $(document).on("click","#clear", function(){
+        $.ajax({
+            method: "DELETE",
+            url: "/articles"
+        }).then(function(data){
+            window.location.reload(true)
+            console.log(data)
+        })
     })
     
 })
