@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $(document).on("click", "#saved-articles", function () {
         console.log("Saved Articles Clicked")
-        window.location.href = "saved.html"
+        window.location.href="saved.html"
     })
 
     $.getJSON("/articles", function (data) {
@@ -46,9 +46,7 @@ $(document).ready(function () {
         for (var i = 0; i < data.length; i++) {
 
             var parentDiv = $("<div id='" + data[i]._id + "'>")
-
             var title = $("<p class='title'>" + data[i].title + "<span><button data-id=" + data[i]._id + " class='delete-article'> Delete Article</button></span><span><button data-id=" + data[i]._id + " class='view-note'>View Note</button></span></p>")
-
             var link = $("<p class='link'>" + data[i].link + "</p>")
             var blurb = $("<p class='blurb'>" + data[i].blurb + "</p>")
 
@@ -71,13 +69,14 @@ $(document).ready(function () {
     $(document).on("click", ".note", function () {
         var id = $(this).attr("data-id")
 
-        var noteDiv = $("<div class='note-div modal'>")
+        var noteDiv = $("<div class='note-div' id='modal'>")
         var h2 = $("<h2>Add a Note</h2>")
         var title = $("<input class='note-title'></input>")
         var input = $("<textarea class='note-body'></textarea>")
         var submit = $("<button data-id=" + id + " class='submit-note'>Submit</button>")
         noteDiv.append(h2, title, input, submit)
         $(".container").append(noteDiv)
+
     })
 
     // ajax call to get the notes
